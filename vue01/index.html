@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+</head>
+<body>
+<div id="app">
+	<div>
+		<router-link to="/about">About</router-link>
+		<router-link to="/article">Article</router-link>
+		<router-link to="/login">Login</router-link>
+	</div>
+	<router-view></router-view>
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+
+    var Article = {
+        name : 'aticle',
+        template : `<div>
+						<h1>Article Page</h1>
+					</div>`
+    };
+
+    var Login = {
+        name : 'login',
+        template : `<div>
+						<h1>Login Page</h1>
+					</div>`
+    };
+
+    var About = {
+        name : 'about',
+        props : [ 'age' ],
+        data() {
+            return {}
+        },
+        template : `<div>
+						<p>Frank</p>
+						<p>age: {{ age }}</p>
+					</div>`
+    };
+
+    var routes = [
+        { path : '/about', component : About },
+        { path : '/article', component : Article },
+        { path : '/login', component : Login }
+    ];
+
+    var router = new VueRouter( {
+        routes
+    } );
+
+    let vm = new Vue( {
+        el : '#app',
+        router
+    } );
+</script>
+</body>
+</html>
